@@ -4,10 +4,54 @@
 <head>
     <meta charset="utf-8">
     <title>JS Issue Tracker</title>
+    <script src='main.js' defer></script>
+    <script src='info_btns.js' defer></script>
 </head>
 
 <body>
-    <script src="main.js"></script>
+    <div>
+        <h1 class='title'>IMERSE</h1>
+        <h3>Interpersonal Micro-Expression Recognition Self-training Engine</h3>
+        <button class='clicker'>Click Me</button>
+    </div>
+
+    <div class='face-image'>
+        <p>------</p>
+        <p>buttons offering 3 or four difficulty settings will be here.  clicking one begins a countdown to the first image appearing</p>
+        <p>the images will be displayed here</p>
+        <p>after an image appears, buttons will appear asking user to guess the expression</p>
+        <p>a countdown beings displaying time until next image appears</p>
+        <p>------</p>
+    </div>
+    
+    <div class='instructions'>
+        <p>Choose a difficulty: Slow, Medium or Fast.</p>
+        <p>You will be shown 7 facial expressions.</p>
+        <p>The 7 possible expressions are: Neutral, Happiness, Sadness, Anger, Disgust, Fear, Surprise</p>
+        <p>The amount of time the expression is shown will depend on the difficulty you chose.</p>
+        <p>After the image disappears, you will be prompted to choose which expression you believe you saw.</p>
+        <p>For information regarding one of the 6 universally recognizable emotions, click on the corresponding button to the right.</p>
+        <p>------</p>
+    </div>
+
+    <div class='info-buttons'>
+        <button class='general'>General</button>
+        <button class='happiness'>Happiness</button>
+        <button class='sadness'>Sadness</button>
+        <button class='anger'>Anger</button>
+        <button class='disgust'>Disgust</button>
+        <button class='fear'>Fear</button>
+        <button class='surprise'>Surprise</button>
+        <p class='info-box'></p>
+        <p>Expression descriptions from <a href='https://www.scienceofpeople.com/microexpressions'>Science of People</a>.</p>
+        <br>
+        <p>Learning to read micro-expressions bears with it a certain responsibility, and the ethics of learning to read emotions someone may not want to show you should be seriously considered.  IMERSE is intended to be used by those who have difficulty with interpersonal relationships due to an impaired ability (for any reason) to understand social cues based on the emotional reactions of those around them.  You can read more about the ethics of learning this skill from Dr. Paul Ekman <a href='https://www.paulekman.com/blog/dangers-reading-micro-expressions/'>on his site here</a>.</p>
+    </div>
+
+    <div>
+        <p>after a round of images is done, results will be shown here</p>
+        <p>------</p>
+    </div>
 </body>
 
 </html>
