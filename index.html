@@ -3,10 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>JS Issue Tracker</title>
-    <script src='main.js' defer></script>
-    <script src='info_btns.js' defer></script>
+    <title>IMERSE</title>
+    <!-- <link rel="stylesheet" href="tabs_and_graph.css"> -->
     <link rel="stylesheet" href="simulation.css">
+    <script src='main.js' defer></script>
+    <script src='image_selection.js' defer></script>
+    <script src='info_btns.js' defer></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src='graph.js' defer></script>
 </head>
 
 <body>
@@ -21,6 +25,7 @@
                 <button class='beg'>Beginner</button>
                 <button class='int'>Intermediate</button>
                 <button class='exp'>Expert</button>
+                <button class='mas'>Master</button>
             </div>
             <div class='timer'></div>
             <img class='sim-img' src="">
@@ -33,7 +38,6 @@
                 <button class='surprise-sim-btn'>Surprise</button>
                 <button class='fear-sim-btn'>Fear</button>
             </div>
-            <div class='answers'></div>
         </div>
     </div>
     
@@ -62,8 +66,28 @@
     </div>
 
     <div>
-        <p>after a round of images is done, results will be shown here</p>
-        <p>------</p>
+        <div class='answers'></div>
+    </div>
+
+    <div>
+        <div class='tab'>
+            <button class='tablinks' onclick="openGraph(event, 'Beginner')">Beginner Stats</button>
+            <button class='tablinks' onclick="openGraph(event, 'Intermediate')">Intermediate Stats</button>
+            <button class='tablinks' onclick="openGraph(event, 'Expert')">Expert Stats</button>
+            <button class='tablinks' onclick="openGraph(event, 'Master')">Master Stats</button>
+        </div>
+        <div id='Beginner' class='tabcontent'>
+            <div id='beg-res-graph'></div>
+        </div>
+        <div id='Intermediate' class='tabcontent'>
+            <div id='int-res-graph'></div>
+        </div>
+        <div id='Expert' class='tabcontent'>
+            <div id='exp-res-graph'></div>
+        </div>
+        <div id='Master' class='tabcontent'>
+            <div id='mas-res-graph'></div>
+        </div>
     </div>
 </body>
 

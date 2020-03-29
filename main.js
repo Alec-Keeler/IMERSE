@@ -2,35 +2,44 @@ const DISPLAY = document.querySelector('.display');
 const BEGSTART = document.querySelector('.beg');
 const INTSTART = document.querySelector('.int');
 const EXPSTART = document.querySelector('.exp');
+const MASSTART = document.querySelector('.mas');
 const TIMEDIV = document.querySelector('.timer');
 const SIMIMG = document.querySelector('.sim-img');
 const DIFFBTNS = document.querySelector('.diff-btns');
-const diffBtnsArr = [BEGSTART, INTSTART, EXPSTART];
-const begImgs = ['./imerse_images/s031/s031-Anger.bmp', './imerse_images/s031/s031-Disgust.bmp', './imerse_images/s031/s031-Fear.bmp', './imerse_images/s031/s031-Happiness.bmp', './imerse_images/s031/s031-Neutral.bmp', './imerse_images/s031/s031-Sadness.bmp', './imerse_images/s031/s031-Surprise.bmp'];
-const intImgs = ['./imerse_images/s009/s009-Anger.bmp', './imerse_images/s009/s009-Disgust.bmp', './imerse_images/s009/s009-Fear.bmp', './imerse_images/s009/s009-Happiness.bmp', './imerse_images/s009/s009-Neutral.bmp', './imerse_images/s009/s009-Sadness.bmp', './imerse_images/s009/s009-Surprise.bmp'];
-const expImgs = ['./imerse_images/s001/s001-Anger.bmp', './imerse_images/s001/s001-Disgust.bmp', './imerse_images/s001/s001-Fear.bmp', './imerse_images/s001/s001-Happiness.bmp', './imerse_images/s001/s001-Neutral.bmp', './imerse_images/s001/s001-Sadness.bmp', './imerse_images/s001/s001-Surprise.bmp'];
+const diffBtnsArr = [BEGSTART, INTSTART, EXPSTART, MASSTART];
 const SIMBTNS = document.querySelector('.sim-btns');
 const ANSDIV = document.querySelector('.answers');
 let DIFFSETTING = '';
-let simAnswers = {};
+let simAnswers = { Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0};
 let CURRENTIMG = '';
 let currImgList = [];
+const ATTEMPTS = {beg: 0, int: 0, exp: 0, mas: 0};
+const BEGRESULTS = {Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0}
+const INTRESULTS = {Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0}
+const EXPRESULTS = {Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0}
+const MASRESULTS = {Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0}
 
 // Begin the simulation with one of the buttons
 diffBtnsArr.forEach(button => button.addEventListener('click', function (event) {
     DIFFBTNS.classList.add('hidden')
     let countdown = 3;
-    simAnswers = {};
+    //resetting simAnswers between simulations
+    simAnswers = { Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0 };
     currImgList = [];
     diff = event.target.innerHTML
 
     //create the correct image list
-    if (diff === 'Beginner') {
-        currImgList = shuffleImgs(begImgs).slice(0);
-    } else if (diff === 'Intermediate') {
-        currImgList = shuffleImgs(intImgs).slice(0);
-    } else if (diff === 'Expert') {
-        currImgList = shuffleImgs(expImgs).slice(0);
+    currImgList = shuffleImgSetList(imgSetList).slice(0)[0];
+    if (diff === 'Beginner' || diff === 'Intermediate' || diff === 'Expert') {
+        currImgList = shuffleImgSetList(imgSetList).slice(0)[0];
+    } else if (diff === 'Master') {
+        currImgList = shuffleImgs(createMasterList()).slice(0);
+    }
+
+    // Close stat graph tabs
+    tabcontent = document.getElementsByClassName('tabcontent');
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = 'none';
     }
 
     //start the correct simulation after a countdown
@@ -50,10 +59,25 @@ diffBtnsArr.forEach(button => button.addEventListener('click', function (event) 
 
 //event listeners for the answer buttons
 Array.from(SIMBTNS.children).forEach(button => button.addEventListener('click', function (event) {
-    //store image src, button clicked in simAnswers
+    //store image src
     imgType = getImgType(CURRENTIMG);
-    simAnswers[imgType] = event.target.innerHTML;
-    // console.log(simAnswers);
+    let targetResObj;
+
+    // Selects a set of results fo increment for the graph
+    if (DIFFSETTING === 'Beginner') {
+        targetResObj = BEGRESULTS;
+    } else if (DIFFSETTING === 'Intermediate') {
+        targetResObj = INTRESULTS;
+    } else if (DIFFSETTING === 'Expert') {
+        targetResObj = EXPRESULTS;
+    } else if (DIFFSETTING === 'Master') {
+        targetResObj = MASRESULTS;
+    }
+
+    if (imgType === event.target.innerHTML) {
+        incrementResKey(imgType, targetResObj);
+        simAnswers[imgType]++;
+    }
     
     //hide buttons
     SIMBTNS.classList.add('hidden');
@@ -102,8 +126,10 @@ function startSim(diff) {
         begSim();
     } else if (diff === 'Intermediate') {
         intSim();
-    } else if(diff === 'Expert') {
+    } else if (diff === 'Expert') {
         expSim();
+    } else if (diff === 'Master') {
+        masSim();
     }
 }
 
@@ -128,13 +154,14 @@ function shuffleImgs(array) {
 function printAnswers() {
     let answerKeys = Object.keys(simAnswers);
     let answerValues = Object.values(simAnswers);
-
+    
     for (i = 0; i < answerKeys.length; i++) {
         let listItem = document.createElement('li');
         ANSDIV.appendChild(listItem);
-        ANSDIV.lastChild.innerHTML = `${answerKeys[i]}: ${answerValues[i]}`
+        ANSDIV.lastChild.innerHTML = `${answerKeys[i]}: ${answerValues[i]} Correct`
     }
-
+    
+    incrementAttempts();
     currImgList = [];
     DIFFBTNS.classList.remove('hidden');
 }
@@ -146,6 +173,7 @@ function begSim() {
         setTimeout(clearSimImg, 3000);
     } else {
         printAnswers();
+        DIFFBTNS.classList.remove('hidden');
     }
 }
 
@@ -169,4 +197,46 @@ function expSim() {
         printAnswers();
         DIFFBTNS.classList.remove('hidden');
     }
+}
+
+//master level simulation
+function masSim() {
+    if (currImgList.length) {
+        SIMIMG.src = currImgList.shift();
+        setTimeout(clearSimImg, 500);
+    } else {
+        printAnswers();
+        DIFFBTNS.classList.remove('hidden');
+    }
+}
+
+function incrementAttempts() {
+    if (DIFFSETTING === 'Beginner') {
+        ATTEMPTS.beg++;
+    } else if (DIFFSETTING === 'Intermediate') {
+        ATTEMPTS.int++;
+    } else if (DIFFSETTING === 'Expert') {
+        ATTEMPTS.exp++;
+    } else if (DIFFSETTING === 'Master') {
+        ATTEMPTS.mas++
+    }
+}
+
+function incrementResKey(key, target) {
+    if (key === 'Neutral') {
+        target.Neutral++;
+    } else if (key === 'Happiness') {
+        target.Happiness++;
+    } else if (key === 'Sadness') {
+        target.Sadness++;
+    } else if (key === 'Anger') {
+        target.Anger++;
+    } else if (key === 'Disgust') {
+        target.Disgust++;
+    } else if (key === 'Fear') {
+        target.Fear++;
+    } else if (key === 'Surprise') {
+        target.Surprise++;
+    }
+
 }
