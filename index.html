@@ -14,79 +14,87 @@
 </head>
 
 <body>
-    <div>
-        <h1 class='title'>IMERSE</h1>
-        <h3>Interpersonal Micro-Expression Recognition Self-training Engine</h3>
+    <div class='title-div'>
+        <h1 class='title-one'>Interpersonal Micro-Expression</h1>
+        <img src="./imerse_logo.png" class='logo'>
+        <h1 class='title-two'>Recognition Self-training Engine</h1>
     </div>
 
-    <div class='face-image'>
-        <div class='display'>
-            <div class='diff-btns'>
-                <button class='beg'>Beginner</button>
-                <button class='int'>Intermediate</button>
-                <button class='exp'>Expert</button>
-                <button class='mas'>Master</button>
+    <div class='main-container'>
+
+        <div class='face-image'>
+            <div class='display'>
+                <div class='diff-btns'>
+                    <button class='beg green'>Beginner</button>
+                    <button class='int blue'>Intermediate</button>
+                    <button class='exp green'>Expert</button>
+                    <button class='mas blue'>Master</button>
+                </div>
+                <div class='timer'></div>
+                <img class='sim-img' src="">
+                <div class='hidden sim-btns'>
+                    <button class='neutral-sim-btn green'>Neutral</button>
+                    <button class='happiness-sim-btn blue'>Happiness</button>
+                    <button class='sadness-sim-btn green'>Sadness</button>
+                    <button class='anger-sim-btn blue'>Anger</button>
+                    <button class='disgust-sim-btn green'>Disgust</button>
+                    <button class='surprise-sim-btn blue'>Surprise</button>
+                    <button class='fear-sim-btn green'>Fear</button>
+                </div>
+                <div>
+                    <div class='answers'></div>
+                </div>
             </div>
-            <div class='timer'></div>
-            <img class='sim-img' src="">
-            <div class='hidden sim-btns'>
-                <button class='neutral-sim-btn'>Neutral</button>
-                <button class='happiness-sim-btn'>Happiness</button>
-                <button class='sadness-sim-btn'>Sadness</button>
-                <button class='anger-sim-btn'>Anger</button>
-                <button class='disgust-sim-btn'>Disgust</button>
-                <button class='surprise-sim-btn'>Surprise</button>
-                <button class='fear-sim-btn'>Fear</button>
+        </div>            
+        <div class='instructions'>
+            <h2>Choose a difficulty</h2>
+            <p>You will be shown 7 facial expressions (28 for Master difficulty).</p>
+            <p>The 7 possible expressions are: Neutral, Happiness, Sadness, Anger, Disgust, Fear, Surprise</p>
+            <p>The amount of time the expression is shown will depend on the difficulty you choose</p>
+            <p>After the image disappears, you will be prompted to choose which expression you believe you saw</p>
+            <p>For information regarding an emotions, click a button below</p>
+            <br>
+            <p>Learning to read micro-expressions bears with it a certain responsibility, and the ethics of learning to read
+                emotions someone may not want to show you should be seriously considered. IMERSE is intended to be used by those
+                who have difficulty with interpersonal relationships due to an impaired ability (for any reason) to understand
+                social cues based on the emotional reactions of those around them. You can read more about the ethics of
+                learning this skill from Dr. Paul Ekman <a href='https://www.paulekman.com/blog/dangers-reading-micro-expressions/'>on his site here</a>.</p>
+        </div>
+    </div>
+
+    <div class='extra-info'>
+        <div class='graphs'>
+            <h2 class='graph-title'>Your Stats For This Session</h2>
+            <div class='tab'>
+                <button class='tablinks green' onclick="openGraph(event, 'Beginner')">Beginner Stats</button>
+                <button class='tablinks blue' onclick="openGraph(event, 'Intermediate')">Intermediate Stats</button>
+                <button class='tablinks green' onclick="openGraph(event, 'Expert')">Expert Stats</button>
+                <button class='tablinks blue' onclick="openGraph(event, 'Master')">Master Stats</button>
+            </div>
+            <div id='Beginner' class='tabcontent'>
+                <div id='beg-res-graph'></div>
+            </div>
+            <div id='Intermediate' class='tabcontent'>
+                <div id='int-res-graph'></div>
+            </div>
+            <div id='Expert' class='tabcontent'>
+                <div id='exp-res-graph'></div>
+            </div>
+            <div id='Master' class='tabcontent'>
+                <div id='mas-res-graph'></div>
             </div>
         </div>
-    </div>
-    
-    <div class='instructions'>
-        <p>Choose a difficulty: Beginner, Intermediate, Expert.</p>
-        <p>You will be shown 7 facial expressions.</p>
-        <p>The 7 possible expressions are: Neutral, Happiness, Sadness, Anger, Disgust, Fear, Surprise</p>
-        <p>The amount of time the expression is shown will depend on the difficulty you chose.</p>
-        <p>After the image disappears, you will be prompted to choose which expression you believe you saw.</p>
-        <p>For information regarding one of the 6 universally recognizable emotions, click on the corresponding button to the right.</p>
-        <p>------</p>
-    </div>
-
-    <div class='info-buttons'>
-        <button class='general'>General</button>
-        <button class='happiness'>Happiness</button>
-        <button class='sadness'>Sadness</button>
-        <button class='anger'>Anger</button>
-        <button class='disgust'>Disgust</button>
-        <button class='fear'>Fear</button>
-        <button class='surprise'>Surprise</button>
-        <p class='info-box'></p>
-        <p>Expression descriptions from <a href='https://www.scienceofpeople.com/microexpressions'>Science of People</a>.</p>
-        <br>
-        <p>Learning to read micro-expressions bears with it a certain responsibility, and the ethics of learning to read emotions someone may not want to show you should be seriously considered.  IMERSE is intended to be used by those who have difficulty with interpersonal relationships due to an impaired ability (for any reason) to understand social cues based on the emotional reactions of those around them.  You can read more about the ethics of learning this skill from Dr. Paul Ekman <a href='https://www.paulekman.com/blog/dangers-reading-micro-expressions/'>on his site here</a>.</p>
-    </div>
-
-    <div>
-        <div class='answers'></div>
-    </div>
-
-    <div>
-        <div class='tab'>
-            <button class='tablinks' onclick="openGraph(event, 'Beginner')">Beginner Stats</button>
-            <button class='tablinks' onclick="openGraph(event, 'Intermediate')">Intermediate Stats</button>
-            <button class='tablinks' onclick="openGraph(event, 'Expert')">Expert Stats</button>
-            <button class='tablinks' onclick="openGraph(event, 'Master')">Master Stats</button>
-        </div>
-        <div id='Beginner' class='tabcontent'>
-            <div id='beg-res-graph'></div>
-        </div>
-        <div id='Intermediate' class='tabcontent'>
-            <div id='int-res-graph'></div>
-        </div>
-        <div id='Expert' class='tabcontent'>
-            <div id='exp-res-graph'></div>
-        </div>
-        <div id='Master' class='tabcontent'>
-            <div id='mas-res-graph'></div>
+        
+        <div class='info-buttons'>
+            <button class='general green'>General</button>
+            <button class='happiness blue'>Happiness</button>
+            <button class='sadness green'>Sadness</button>
+            <button class='anger blue'>Anger</button>
+            <button class='disgust green'>Disgust</button>
+            <button class='fear blue'>Fear</button>
+            <button class='surprise green'>Surprise</button>
+            <p class='info-box'></p>
+            <p>Expression descriptions from <a href='https://www.scienceofpeople.com/microexpressions'>Science of People</a>.</p>
         </div>
     </div>
 </body>
