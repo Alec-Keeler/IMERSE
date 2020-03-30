@@ -28,7 +28,7 @@ function openGraph(evt, name) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
 
-    document.getElementById(name).style.display = 'block';
+    document.getElementById(name).style.display = 'flex';
     evt.currentTarget.className += ' active';
 }
 

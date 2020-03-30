@@ -143,8 +143,10 @@ li {
 }
 
 .tab {
+    display: flex;
+    justify-content: center;
     overflow: hidden;
-    width: 526px;
+    /* width: 526px; */
     background-color: #f1f1f1;
 }
 
@@ -160,7 +162,9 @@ li {
 
 .tabcontent {
     display: none;
+    /* justify-content: center; */
     padding: 6px 12px;
+    margin: 0 auto;
     width: 500px;
     height: 400px;
     border-top: none;
