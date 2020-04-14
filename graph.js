@@ -16,6 +16,9 @@ function openGraph(evt, name) {
     } else if (name === 'Master') {
         data = createMasData();
         masterGraphMaker(data)
+    } else if (name === 'Eyes') {
+        data = createEyeData();
+        eyeGraphMaker(data);
     }
 
     tabcontent = document.getElementsByClassName('tabcontent');
@@ -44,7 +47,7 @@ function createBegData() {
         let percent = parseFloat(((resValues[i] / numAttempts) * 100).toFixed(2))
         begData.push({x: i+1, y: percent, label: resKeys[i]})
     }
-    return begData
+    return begData;
 }
 
 // Beginner Stat Graph
@@ -84,7 +87,7 @@ function createIntData() {
         let percent = parseFloat(((resValues[i] / numAttempts) * 100).toFixed(2))
         intData.push({ x: i + 1, y: percent, label: resKeys[i] })
     }
-    return intData
+    return intData;
 }
 
 // Intermediate Stat Graph
@@ -125,7 +128,7 @@ function createExpData() {
         expData.push({ x: i + 1, y: percent, label: resKeys[i] })
     }
     
-    return expData
+    return expData;
 }
 
 // Expert Stat Graph
@@ -166,7 +169,7 @@ function createMasData() {
         masData.push({ x: i + 1, y: percent, label: resKeys[i] })
     }
     
-    return masData
+    return masData;
 }
 
 // Master Stat Graph
@@ -192,4 +195,44 @@ function masterGraphMaker(someData) {
         }
     )
     masChart.render();
+}
+
+// eyes-only graph
+function createEyeData() {
+    let numAttempts = ATTEMPTS.eye;
+    let eyeData = [];
+
+    let resKeys = Object.keys(EYERESULTS);
+    let resValues = Object.values(EYERESULTS);
+
+    for (let i = 0; i < resKeys.length; i++) {
+        let percent = parseFloat(((resValues[i] / numAttempts) * 100).toFixed(2))
+        eyeData.push({ x: i + 1, y: percent, label: resKeys[i] })
+    }
+
+    return eyeData;
+}
+
+function eyeGraphMaker(someData) {
+    let eyeChart = new CanvasJS.Chart('eye-res-graph',
+        {
+            title: {
+                text: 'Eyes-Only Stats'
+            },
+            axisY: {
+                title: "Percent Correct Answers",
+                maximum: 100
+            },
+            data: [
+                {
+                    type: 'column',
+                    showInLegend: true,
+                    legendMarkerType: "none",
+                    legendText: `Number of attempts on this difficulty: ${ATTEMPTS.exp}`,
+                    dataPoints: someData
+                }
+            ]
+        }
+    )
+    eyeChart.render();
 }

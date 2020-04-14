@@ -3,21 +3,24 @@ const BEGSTART = document.querySelector('.beg');
 const INTSTART = document.querySelector('.int');
 const EXPSTART = document.querySelector('.exp');
 const MASSTART = document.querySelector('.mas');
+const EYESTART = document.querySelector('.eye');
 const TIMEDIV = document.querySelector('.timer');
 const SIMIMG = document.querySelector('.sim-img');
 const DIFFBTNS = document.querySelector('.diff-btns');
-const diffBtnsArr = [BEGSTART, INTSTART, EXPSTART, MASSTART];
+const MOUTHHIDER = document.querySelector('.eyes-only-blocker')
+const diffBtnsArr = [BEGSTART, INTSTART, EXPSTART, MASSTART, EYESTART];
 const SIMBTNS = document.querySelector('.sim-btns');
 const ANSDIV = document.querySelector('.answers');
 let DIFFSETTING = '';
 let simAnswers = { Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0};
 let CURRENTIMG = '';
 let currImgList = [];
-const ATTEMPTS = {beg: 0, int: 0, exp: 0, mas: 0};
+const ATTEMPTS = {beg: 0, int: 0, exp: 0, mas: 0, eye: 0};
 const BEGRESULTS = {Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0}
 const INTRESULTS = {Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0}
 const EXPRESULTS = {Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0}
 const MASRESULTS = {Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0}
+const EYERESULTS = {Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0}
 
 // Begin the simulation with one of the buttons
 diffBtnsArr.forEach(button => button.addEventListener('click', function (event) {
@@ -30,7 +33,7 @@ diffBtnsArr.forEach(button => button.addEventListener('click', function (event) 
 
     //create the correct image list
     currImgList = shuffleImgSetList(imgSetList).slice(0)[0];
-    if (diff === 'Beginner' || diff === 'Intermediate' || diff === 'Expert') {
+    if (diff === 'Beginner' || diff === 'Intermediate' || diff === 'Expert' || diff === 'Eyes') {
         currImgList = shuffleImgSetList(imgSetList).slice(0)[0];
     } else if (diff === 'Master') {
         currImgList = shuffleImgs(createMasterList()).slice(0);
@@ -62,7 +65,7 @@ Array.from(SIMBTNS.children).forEach(button => button.addEventListener('click', 
     //store image src
     imgType = getImgType(CURRENTIMG);
     let targetResObj;
-
+    
     // Selects a set of results fo increment for the graph
     if (DIFFSETTING === 'Beginner') {
         targetResObj = BEGRESULTS;
@@ -72,8 +75,10 @@ Array.from(SIMBTNS.children).forEach(button => button.addEventListener('click', 
         targetResObj = EXPRESULTS;
     } else if (DIFFSETTING === 'Master') {
         targetResObj = MASRESULTS;
+    } else if (DIFFSETTING === "Eyes") {
+        targetResObj = EYERESULTS;
     }
-
+    
     if (imgType === event.target.innerHTML) {
         incrementResKey(imgType, targetResObj);
         simAnswers[imgType]++;
@@ -87,6 +92,10 @@ Array.from(SIMBTNS.children).forEach(button => button.addEventListener('click', 
 
     if (currImgList.length === 0) {
         printAnswers();
+
+        if (!MOUTHHIDER.classList.contains('hidden')) {
+            MOUTHHIDER.classList.add('hidden');
+        }
         return;
     }
 
@@ -130,6 +139,8 @@ function startSim(diff) {
         expSim();
     } else if (diff === 'Master') {
         masSim();
+    } else if (diff === 'Eyes') {
+        eyeSim();
     }
 }
 
@@ -171,9 +182,6 @@ function begSim() {
     if (currImgList.length) {
         SIMIMG.src = currImgList.shift();
         setTimeout(clearSimImg, 3000);
-    } else {
-        printAnswers();
-        DIFFBTNS.classList.remove('hidden');
     }
 }
 
@@ -182,9 +190,6 @@ function intSim() {
     if (currImgList.length) {
         SIMIMG.src = currImgList.shift();
         setTimeout(clearSimImg, 1000);
-    } else {
-        printAnswers();
-        DIFFBTNS.classList.remove('hidden');
     }
 }
 
@@ -193,9 +198,6 @@ function expSim() {
     if (currImgList.length) {
         SIMIMG.src = currImgList.shift();
         setTimeout(clearSimImg, 500);
-    } else {
-        printAnswers();
-        DIFFBTNS.classList.remove('hidden');
     }
 }
 
@@ -204,10 +206,19 @@ function masSim() {
     if (currImgList.length) {
         SIMIMG.src = currImgList.shift();
         setTimeout(clearSimImg, 500);
-    } else {
-        printAnswers();
-        DIFFBTNS.classList.remove('hidden');
     }
+}
+
+//eyes-only level simulation
+function eyeSim() {
+    if (MOUTHHIDER.classList.contains('hidden')) {
+        MOUTHHIDER.classList.remove('hidden');
+    };
+
+    if (currImgList.length) {
+        SIMIMG.src = currImgList.shift();
+        setTimeout(clearSimImg, 500);
+    };
 }
 
 function incrementAttempts() {
@@ -218,7 +229,9 @@ function incrementAttempts() {
     } else if (DIFFSETTING === 'Expert') {
         ATTEMPTS.exp++;
     } else if (DIFFSETTING === 'Master') {
-        ATTEMPTS.mas++
+        ATTEMPTS.mas++;
+    } else if (DIFFSETTING === 'Eyes') {
+        ATTEMPTS.eye++;
     }
 }
 

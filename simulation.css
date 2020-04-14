@@ -2,8 +2,18 @@ title, link, div, h1, div, button, h2, span, p {
     font-family: Verdana, sans-serif
 }
 
-body {
+html, body {
     background-color: #f6f5f3;
+    margin: 0px;
+}
+
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 70px;
 }
 
 li {
@@ -42,6 +52,15 @@ li {
     position: relative;
     width: 640px;
     height: 480px;
+}
+
+.eyes-only-blocker {
+    position: absolute;
+    z-index: 2;
+    height: 200px;
+    width: 640px;
+    background-color: #f6f5f3;
+    bottom: 0;
 }
 
 .diff-btns {
@@ -165,7 +184,7 @@ li {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 10px 10px;
     color: #f6f5f3;
     transition: 0.3s;
     font-size: 14px;
@@ -181,6 +200,8 @@ li {
     border-top: none;
 }
 
+
+/* modal */
 .modal {
     display: none;
     position: fixed;
@@ -231,17 +252,13 @@ li {
     outline: none;
 }
 
-.modal-btn-div {
-    text-align: center;
-}
-
 .modal-inst-1, .modal-inst-3 {
-    color: #4C96D7;
+    color: #74D14C;
     text-align: center;
 }
 
 .modal-inst-2 {
-    color: #74D14C;
+    color: #4C96D7;
     text-align: center;
 }
 
@@ -251,4 +268,28 @@ li {
 
 .disclaimer {
     font-size: 12px;
+}
+
+/* footer */
+.footer {
+  width: 100%;
+  min-width: 400px;
+  min-height: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  background-color: #6f7176;
+  color: white;
+  box-sizing: border-box;
+  margin-top: 60px;
+  clear: both;
+}
+
+.footer > a {
+    text-decoration: none;
+    color: white;
 }
