@@ -9,6 +9,7 @@
     <script src='main.js' defer></script>
     <script src='image_selection.js' defer></script>
     <script src='info_btns.js' defer></script>
+    <script src='modal.js' defer></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src='graph.js' defer></script>
 </head>
@@ -18,6 +19,38 @@
         <h1 class='title-one'>Interpersonal Micro-Expression</h1>
         <img src="./imerse_logo.png" class='logo'>
         <h1 class='title-two'>Recognition Self-training Engine</h1>
+    </div>
+
+    <div class='modal-btn-div'>
+        <button id='modalBtn' class='green'>Instructions</button>
+    </div>
+
+    <div id='modalDiv' class='modal'>
+        <div class='modal-content'>
+            <span class="close">&times;</span>
+            <h2 class='modal-inst-1'>First, choose a difficulty</h2>
+            <h2 class='modal-inst-2'>Watch closely for a micro-expression</h2>
+            <h2 class='modal-inst-3'>Click on the emotion you saw</h2>
+            <br>
+            <div class='inst-details'>
+                <h4>Further details</h3>
+                <p>Beginner: Images are shown for 3 seconds</p>
+                <p>Intermediate: Images are shown for 1 seconds</p>
+                <p>Expert: Images are shown for 0.5 seconds</p>
+                <p>Master: Images are shown for 3 seconds.  Four image sets are mixed together.</p>
+                <br>
+                <p>You will be shown 7 facial expressions (28 for Master difficulty).</p>
+                <p>The 7 possible expressions are: Neutral, Happiness, Sadness, Anger, Disgust, Fear, Surprise.</p>
+                <p>As you complete sets, you can check your overall stats below.  Keep in mind these stats will be lost when the page is refreshed.</p>
+            </div>
+            <br>
+            <p class='disclaimer'>Learning to read micro-expressions bears with it a certain responsibility, and the ethics of learning to read
+                emotions someone may not want to show you should be seriously considered. IMERSE is intended to be used by those
+                who have difficulty with interpersonal relationships due to an impaired ability (for any reason) to understand
+                social cues based on the emotional reactions of those around them. You can read more about the ethics of
+                learning this skill from Dr. Paul Ekman <a
+                    href='https://www.paulekman.com/blog/dangers-reading-micro-expressions/'>on his site here</a>.</p>
+        </div>
     </div>
 
     <div class='main-container'>
@@ -45,21 +78,7 @@
                     <div class='answers'></div>
                 </div>
             </div>
-        </div>            
-        <div class='instructions'>
-            <h2>Choose a difficulty</h2>
-            <p>You will be shown 7 facial expressions (28 for Master difficulty).</p>
-            <p>The 7 possible expressions are: Neutral, Happiness, Sadness, Anger, Disgust, Fear, Surprise</p>
-            <p>The amount of time the expression is shown will depend on the difficulty you choose</p>
-            <p>After the image disappears, you will be prompted to choose which expression you believe you saw</p>
-            <p>For information regarding an emotions, click a button below</p>
-            <br>
-            <p>Learning to read micro-expressions bears with it a certain responsibility, and the ethics of learning to read
-                emotions someone may not want to show you should be seriously considered. IMERSE is intended to be used by those
-                who have difficulty with interpersonal relationships due to an impaired ability (for any reason) to understand
-                social cues based on the emotional reactions of those around them. You can read more about the ethics of
-                learning this skill from Dr. Paul Ekman <a href='https://www.paulekman.com/blog/dangers-reading-micro-expressions/'>on his site here</a>.</p>
-        </div>
+        </div>           
     </div>
 
     <div class='extra-info'>
@@ -86,6 +105,7 @@
         </div>
         
         <div class='info-buttons'>
+            <h2 class='info-title'>Additional Information</h2>
             <button class='general green'>General</button>
             <button class='happiness blue'>Happiness</button>
             <button class='sadness green'>Sadness</button>
@@ -94,7 +114,7 @@
             <button class='fear blue'>Fear</button>
             <button class='surprise green'>Surprise</button>
             <p class='info-box'></p>
-            <p>Expression descriptions from <a href='https://www.scienceofpeople.com/microexpressions'>Science of People</a>.</p>
+            <!-- <p>Expression descriptions from <a href='https://www.scienceofpeople.com/microexpressions'>Science of People</a>.</p> -->
         </div>
     </div>
 </body>
