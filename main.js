@@ -11,6 +11,7 @@ const MOUTHHIDER = document.querySelector('.eyes-only-blocker')
 const diffBtnsArr = [BEGSTART, INTSTART, EXPSTART, MASSTART, EYESTART];
 const SIMBTNS = document.querySelector('.sim-btns');
 const ANSDIV = document.querySelector('.answers');
+const DISPLAYTITLE = document.querySelector('.sim-title');
 let DIFFSETTING = '';
 let simAnswers = { Neutral: 0, Happiness: 0, Sadness: 0, Anger: 0, Disgust: 0, Surprise: 0, Fear: 0};
 let CURRENTIMG = '';
@@ -58,6 +59,7 @@ diffBtnsArr.forEach(button => button.addEventListener('click', function (event) 
     }
     timedCount();
     ANSDIV.innerHTML = ''
+    DISPLAYTITLE.innerHTML = 'Watch Closely Then Choose The Emotion'
 }))
 
 //event listeners for the answer buttons
@@ -175,6 +177,7 @@ function printAnswers() {
     incrementAttempts();
     currImgList = [];
     DIFFBTNS.classList.remove('hidden');
+    DISPLAYTITLE.innerHTML = 'Choose A New Difficulty Or See Your Stats'
 }
 
 //beginner level simulation

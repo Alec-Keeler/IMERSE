@@ -4,9 +4,12 @@
 <head>
     <meta charset="utf-8">
     <title>IMERSE</title>
-    <!-- <link rel="stylesheet" href="tabs_and_graph.css"> -->
     <link rel="stylesheet" href="simulation.css">
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/8d62d0058c.js" crossorigin="anonymous"></script>
+
     <script src='main.js' defer></script>
     <script src='image_selection.js' defer></script>
     <script src='info_btns.js' defer></script>
@@ -23,11 +26,6 @@
                 <img src="./imerse_logo.png" class='logo'>
                 <h1 class='title-two'>Recognition Self-training Engine</h1>
             </div>
-
-            <!-- <div class='modal-btn-div'>
-                <button id='modalBtn' class='green'>Instructions</button>
-            </div> -->
-
             <div id='modalDiv' class='modal'>
                 <div class='modal-content'>
                     <span class="close">&times;</span>
@@ -61,6 +59,7 @@
                 <div class='face-image'>
                     <div class='display'>
                         <div class='eyes-only-blocker hidden'></div>
+                        <h2 class='sim-title'>Choose A Difficulty Or View Instructions</h2>
                         <div class='diff-btns'>
                             <button id='modalBtn' class='blue'>Instructions</button>
                             <button class='beg green'>Beginner</button>
@@ -84,10 +83,7 @@
                             <div class='answers'></div>
                         </div>
                     </div>
-                </div>           
-            </div>
-
-            <div class='extra-info'>
+                </div> 
                 <div class='graphs'>
                     <h2 class='graph-title'>Your Stats For This Session</h2>
                     <div class='tab'>
@@ -113,7 +109,10 @@
                         <div id='eye-res-graph'></div>
                     </div>
                 </div>
-                
+
+            </div>
+
+            <div class='extra-info'>
                 <div class='info-buttons'>
                     <h2 class='info-title'>Additional Information</h2>
                     <button class='general green'>General</button>
@@ -124,15 +123,14 @@
                     <button class='fear blue'>Fear</button>
                     <button class='surprise green'>Surprise</button>
                     <p class='info-box'></p>
-                    <!-- <p>Expression descriptions from <a href='https://www.scienceofpeople.com/microexpressions'>Science of People</a>.</p> -->
                 </div>
             </div>
         </div>
     </div>
     <div class='footer'>
         <p>ALEC KEELER</p>
-        <a href="https://www.linkedin.com/in/alec-keeler-a8499083/"><i className="fab fa-linkedin fa-lg"></i>LinkedIn</a>
-        <a href="https://github.com/Alec-Keeler"><i className="fab fa-github fa-lg"></i></i>GitHub</a>
+        <a href="https://www.linkedin.com/in/alec-keeler-a8499083/"><i class="fab fa-linkedin fa-lg"></i>LinkedIn</a>
+        <a href="https://github.com/Alec-Keeler"><i class="fab fa-github fa-lg"></i></i>GitHub</a>
     </div>
 </body>
 

@@ -41,6 +41,12 @@ li {
     justify-content: space-evenly;
 }
 
+.sim-title {
+    display: flex;
+    justify-content: center;
+    color: #4C96D7;
+}
+
 /* main display */
 .timer {
     font-size: 50px;
@@ -71,7 +77,7 @@ li {
 
 .diff-btns button {
     padding: 5px;
-    margin: 15px;
+    margin: 3px 15px 15px 15px;
     cursor: pointer;
     border-radius: 4px;
     font-size: 15px;
@@ -103,7 +109,17 @@ li {
 
 .answers {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.answers > li {
+    margin: 10px;
+}
+.answers > li:nth-child(odd) {
+    color: #74D14C;
+}
+.answers > li:nth-child(even) {
+    color: #4C96D7;
 }
 
 .instructions {
@@ -114,7 +130,7 @@ li {
 .extra-info {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 .info-buttons {
     width: 700px;
@@ -152,6 +168,10 @@ li {
     background-color: #74D14C;
 }
 
+.info-box {
+    border: 1px solid #74D14C;
+}
+
 .graphs {
     width: 640px;
     /* height: 455px; */
@@ -168,7 +188,7 @@ li {
 .graph-title {
     display: flex;
     justify-content: center;
-    color: #4C96D7;
+    color: #74D14C;
 }
 
 .tab {
@@ -240,7 +260,7 @@ li {
 
 #modalBtn {
     padding: 5px;
-    margin: 15px;
+    margin: 3px 15px 15px 15px;
     cursor: pointer;
     border-radius: 4px;
     font-size: 15px;
@@ -292,4 +312,8 @@ li {
 .footer > a {
     text-decoration: none;
     color: white;
+}
+
+.footer > * {
+    margin: 0px 50px 0px 50px;
 }

@@ -42,10 +42,16 @@ function createBegData() {
 
     let resKeys = Object.keys(BEGRESULTS);
     let resValues = Object.values(BEGRESULTS);
+    let color = '';
 
     for (let i = 0; i < resKeys.length; i++) {
         let percent = parseFloat(((resValues[i] / numAttempts) * 100).toFixed(2))
-        begData.push({x: i+1, y: percent, label: resKeys[i]})
+        if (i % 2 === 0) {
+            color = '#74D14C';
+        } else {
+            color = '#4C96D7';
+        }
+        begData.push({x: i+1, y: percent, label: resKeys[i], color: color})
     }
     return begData;
 }
@@ -54,7 +60,10 @@ function createBegData() {
 function beginnerGraphMaker(someData) {
     let begChart = new CanvasJS.Chart('beg-res-graph',
         {
+            backgroundColor: "#f6f5f3",
             title:{
+                fontFamily: 'Verdana, sans-serif',
+                fontColor: '#4C96D7',
                 text: 'Beginner Stats'
             },
             axisY: {
@@ -82,10 +91,16 @@ function createIntData() {
 
     let resKeys = Object.keys(INTRESULTS);
     let resValues = Object.values(INTRESULTS);
+    let color = '';
 
     for (let i = 0; i < resKeys.length; i++) {
         let percent = parseFloat(((resValues[i] / numAttempts) * 100).toFixed(2))
-        intData.push({ x: i + 1, y: percent, label: resKeys[i] })
+        if (i % 2 === 0) {
+            color = '#74D14C';
+        } else {
+            color = '#4C96D7';
+        }
+        intData.push({x: i + 1, y: percent, label: resKeys[i], color: color })
     }
     return intData;
 }
@@ -94,7 +109,10 @@ function createIntData() {
 function intermediateGraphMaker(someData) {
     let intChart = new CanvasJS.Chart('int-res-graph',
         {
+            backgroundColor: "#f6f5f3",
             title: {
+                fontFamily: 'Verdana, sans-serif',
+                fontColor: '#74D14C',
                 text: 'Intermediate Stats'
             },
             axisY: {
@@ -122,10 +140,16 @@ function createExpData() {
 
     let resKeys = Object.keys(EXPRESULTS);
     let resValues = Object.values(EXPRESULTS);
+    let color = '';
     
     for (let i = 0; i < resKeys.length; i++) {
         let percent = parseFloat(((resValues[i] / numAttempts) * 100).toFixed(2))
-        expData.push({ x: i + 1, y: percent, label: resKeys[i] })
+        if (i % 2 === 0) {
+            color = '#74D14C';
+        } else {
+            color = '#4C96D7';
+        }
+        expData.push({ x: i + 1, y: percent, label: resKeys[i], color: color })
     }
     
     return expData;
@@ -135,7 +159,10 @@ function createExpData() {
 function expertGraphMaker(someData) {
     let expChart = new CanvasJS.Chart('exp-res-graph',
         {
+            backgroundColor: "#f6f5f3",
             title: {
+                fontFamily: 'Verdana, sans-serif',
+                fontColor: '#4C96D7',
                 text: 'Expert Stats'
             },
             axisY: {
@@ -163,10 +190,16 @@ function createMasData() {
 
     let resKeys = Object.keys(MASRESULTS);
     let resValues = Object.values(MASRESULTS);
+    let color = '';
     
     for (let i = 0; i < resKeys.length; i++) {
         let percent = parseFloat(((resValues[i] / (numAttempts * 4)) * 100).toFixed(2))
-        masData.push({ x: i + 1, y: percent, label: resKeys[i] })
+        if (i % 2 === 0) {
+            color = '#74D14C';
+        } else {
+            color = '#4C96D7';
+        }
+        masData.push({ x: i + 1, y: percent, label: resKeys[i], color: color })
     }
     
     return masData;
@@ -176,7 +209,10 @@ function createMasData() {
 function masterGraphMaker(someData) {
     let masChart = new CanvasJS.Chart('mas-res-graph',
         {
+            backgroundColor: "#f6f5f3",
             title: {
+                fontFamily: 'Verdana, sans-serif',
+                fontColor: '#74D14C',
                 text: 'Master Stats'
             },
             axisY: {
@@ -204,10 +240,16 @@ function createEyeData() {
 
     let resKeys = Object.keys(EYERESULTS);
     let resValues = Object.values(EYERESULTS);
+    let color = '';
 
     for (let i = 0; i < resKeys.length; i++) {
         let percent = parseFloat(((resValues[i] / numAttempts) * 100).toFixed(2))
-        eyeData.push({ x: i + 1, y: percent, label: resKeys[i] })
+        if (i % 2 === 0) {
+            color = '#74D14C';
+        } else {
+            color = '#4C96D7';
+        }
+        eyeData.push({ x: i + 1, y: percent, label: resKeys[i], color: color })
     }
 
     return eyeData;
@@ -216,7 +258,10 @@ function createEyeData() {
 function eyeGraphMaker(someData) {
     let eyeChart = new CanvasJS.Chart('eye-res-graph',
         {
+            backgroundColor: "#f6f5f3",
             title: {
+                fontFamily: 'Verdana, sans-serif',
+                fontColor: '#4C96D7',
                 text: 'Eyes-Only Stats'
             },
             axisY: {
