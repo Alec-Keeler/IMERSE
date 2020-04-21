@@ -42,6 +42,7 @@ li {
 }
 
 .sim-title {
+    position: absolute;
     display: flex;
     justify-content: center;
     color: #4C96D7;
@@ -49,6 +50,8 @@ li {
 
 /* main display */
 .timer {
+    margin-top: 70px;
+    position: absolute;
     font-size: 50px;
     text-align: center;
     color: #4C96D7;
@@ -56,9 +59,12 @@ li {
 
 .face-image {
     position: relative;
+    display: flex;
+    justify-content: center;
     width: 640px;
     height: 480px;
 }
+
 
 .eyes-only-blocker {
     position: absolute;
@@ -70,7 +76,7 @@ li {
 }
 
 .diff-btns {
-    margin-top: 10px;
+    margin-top: 70px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -89,7 +95,7 @@ li {
 }
 
 .sim-btns {
-    margin-top: 10px;
+    margin-top: 40px;
     display: flex;
     justify-content: space-evenly;
 }
